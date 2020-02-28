@@ -103,7 +103,6 @@
       // // SettingDrawer
       // 注释这个因为在个人设置模块已经加载了SettingDrawer页面
       // update-end ---- author:os_chengtgen -- date:20190830 --  for:issues/463 -编译主题颜色已生效，但还一直转圈，显示主题 正在编译 ------
-
     },
     mixins: [mixin, mixinDevice],
     data() {
@@ -174,7 +173,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" type="text/scss">
   body {
     // 打开滚动条固定显示
     overflow-y: scroll;

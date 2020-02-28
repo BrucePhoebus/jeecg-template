@@ -33,7 +33,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" type="text/scss">
 
   /*
  * The following styles are auto-applied to elements with

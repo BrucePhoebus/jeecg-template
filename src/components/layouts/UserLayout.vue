@@ -49,7 +49,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
   #userLayout.user-layout-wrapper {
     height: 100%;
 

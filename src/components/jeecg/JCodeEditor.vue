@@ -318,7 +318,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" type="text/less">
   .code-editor-cust{
     flex-grow:1;
     display:flex;

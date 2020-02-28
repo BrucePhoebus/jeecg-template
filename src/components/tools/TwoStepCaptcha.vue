@@ -75,12 +75,12 @@ export default {
       this.$emit('cancel')
     },
     onForgeStepCode() {
-      
+
     }
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
   .step-form-wrapper {
     margin: 0 auto;
     width: 80%;

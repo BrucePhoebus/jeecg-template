@@ -245,7 +245,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
   .project-list {
 
     .card-title {

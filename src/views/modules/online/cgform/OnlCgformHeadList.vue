@@ -453,7 +453,7 @@
 <style scoped>
   @import '~@assets/less/common.less';
 </style>
-<style lang="less">
+<style lang="less" type="text/less">
   .ant-card-body .table-operator {
     margin-bottom: 18px;
   }

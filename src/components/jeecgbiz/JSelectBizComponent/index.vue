@@ -132,7 +132,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
   .j-select-biz-component-box {
 
     $width: 82px;

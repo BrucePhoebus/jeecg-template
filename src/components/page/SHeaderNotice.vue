@@ -47,7 +47,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
   .header-notice{
     display: inline-block;
     transition: all 0.3s;

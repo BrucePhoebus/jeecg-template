@@ -105,16 +105,6 @@
           :disabled="loginBtn">确定
         </a-button>
       </a-form-item>
-
-      <!-- <div class="user-login-other">
-        <span>其他登陆方式</span>
-        <a><a-icon class="item-icon" type="alipay-circle"></a-icon></a>
-        <a><a-icon class="item-icon" type="taobao-circle"></a-icon></a>
-        <a><a-icon class="item-icon" type="weibo-circle"></a-icon></a>
-        <router-link class="register" :to="{ name: 'register' }">
-          注册账户
-        </router-link>
-      </div>-->
     </a-form>
 
     <two-step-captcha
@@ -157,16 +147,11 @@
           </a-select>
         </a-form-item>
       </a-form>
-
-
-
     </a-modal>
-
   </div>
 </template>
 
 <script>
-  //import md5 from "md5"
   import api from '@/api'
   import TwoStepCaptcha from '@/components/tools/TwoStepCaptcha'
   import { mapActions } from "vuex"
@@ -270,8 +255,6 @@
               }).catch((err) => {
                 that.requestFailed(err);
               });
-
-
             }else {
               that.loginBtn = false;
             }
@@ -486,7 +469,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
 
   .user-layout-login {
     label {

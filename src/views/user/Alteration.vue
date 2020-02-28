@@ -60,7 +60,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
   .steps {
     max-width: 750px;
     margin: 16px auto;

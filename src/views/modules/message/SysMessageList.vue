@@ -199,7 +199,7 @@
     methods: {}
   }
 </script>
-<style lang="less" scoped>
+<style lang="less" type="text/less" scoped>
   /** Button按钮间距 */
   .ant-btn {
     margin-left: 3px

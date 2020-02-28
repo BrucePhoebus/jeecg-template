@@ -89,7 +89,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" type="text/less">
   .announcementCustomModal{
     .ant-modal-header {
       border: none;
@@ -112,7 +112,7 @@
     }
   }
 </style>
-<style scoped lang="less">
+<style scoped lang="less" type="text/less">
   .daily-article {
     .article-button {
       font-size: 1.2rem !important;

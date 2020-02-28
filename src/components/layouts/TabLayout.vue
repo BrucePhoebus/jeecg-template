@@ -305,7 +305,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" type="text/less">
 
   /*
  * The following styles are auto-applied to elements with

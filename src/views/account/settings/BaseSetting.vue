@@ -103,7 +103,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
 
   .avatar-upload-wrapper {
     height: 200px;

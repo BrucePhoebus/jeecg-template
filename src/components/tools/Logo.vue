@@ -21,7 +21,7 @@
     props: {
       title: {
         type: String,
-        default: 'Jeecg-Boot Pro',
+        default: process.env.VUE_APP_TITLE,
         required: false
       },
       showTitle: {
@@ -32,7 +32,7 @@
     }
   }
 </script>
-<style lang="less" scoped>
+<style lang="less" type="text/less" scoped>
   /*缩小首页布 局顶部的高度*/
   @height: 59px;
 

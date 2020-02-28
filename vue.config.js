@@ -6,22 +6,21 @@ function resolve(dir) {
 
 // vue.config.js
 module.exports = {
-  /*
-    Vue-cli3:
-    Crashed when using Webpack `import()` #2463
-    https://github.com/vuejs/vue-cli/issues/2463
-   */
-  // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
+  publicPath: process.env.VUE_APP_BASE_URL,
+	outputDir: 'jeecg-template',
+	devServer: {
+		port: 3000,
+		publicPath: process.env.VUE_APP_BASE_URL,
+		proxy: {
+			'/jeecg-boot': {
+				target: 'http://localhost:8080', //请求本地 需要jeecg-boot后台项目
+				ws: false,
+				changeOrigin: true
+			},
+		}
+	},
+	lintOnSave: undefined,
   productionSourceMap: false,
-
-  //打包app时放开该配置
-  //publicPath:'./',
-  configureWebpack: config => {
-    //生产环境取消 console.log
-    if (process.env.NODE_ENV === 'production') {
-      config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
-    }
-  },
   chainWebpack: (config) => {
     config.resolve.alias
       .set('@$', resolve('src'))
@@ -53,26 +52,4 @@ module.exports = {
       }
     }
   },
-
-  devServer: {
-    port: 3000,
-		outputDir: 'jeecg-template',
-    proxy: {
-     /* '/api': {
-        target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro', //mock API接口系统
-        ws: false,
-        changeOrigin: true,
-        pathRewrite: {
-          '/jeecg-boot': ''  //默认所有请求都加了jeecg-boot前缀，需要去掉
-        }
-      },*/
-      '/jeecg-boot': {
-        target: 'http://localhost:8080', //请求本地 需要jeecg-boot后台项目
-        ws: false,
-        changeOrigin: true
-      },
-    }
-  },
-
-  lintOnSave: undefined
 }

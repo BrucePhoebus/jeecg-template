@@ -188,4 +188,4 @@
   }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" type="text/scss" scoped></style>

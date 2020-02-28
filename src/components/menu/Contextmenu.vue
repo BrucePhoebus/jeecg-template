@@ -60,7 +60,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less" type="text/less" scoped>
   .contextmenu{
     position: fixed;
     z-index: 1;

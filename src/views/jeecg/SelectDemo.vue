@@ -451,7 +451,7 @@ sayHi('hello, world!')`
     }
   }
 </script>
-<style lang="less" scoped>
+<style lang="less" type="text/less" scoped>
   .ant-card-body .table-operator {
     margin-bottom: 18px;
   }

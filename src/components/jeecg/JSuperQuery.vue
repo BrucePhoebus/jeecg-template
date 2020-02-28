@@ -420,7 +420,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
 
   .j-super-query-box {
     display: inline-block;

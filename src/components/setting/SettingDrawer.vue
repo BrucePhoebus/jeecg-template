@@ -255,7 +255,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
 
   .setting-drawer-index-content {
 

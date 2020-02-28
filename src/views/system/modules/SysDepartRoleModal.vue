@@ -7,10 +7,10 @@
     @ok="handleOk"
     @cancel="handleCancel"
     cancelText="关闭">
-    
+
     <a-spin :spinning="confirmLoading">
       <a-form :form="form">
-      
+
         <a-form-item
           :labelCol="labelCol"
           :wrapperCol="wrapperCol"
@@ -29,7 +29,7 @@
           label="描述">
           <a-input placeholder="请输入描述" v-decorator="['description', validatorRules.description]" />
         </a-form-item>
-		
+
       </a-form>
     </a-spin>
   </a-modal>
@@ -157,6 +157,6 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less" type="text/less" scoped>
 
 </style>

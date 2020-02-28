@@ -125,7 +125,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" type="text/scss">
   .j-modal-box {
 
     &.fullscreen {

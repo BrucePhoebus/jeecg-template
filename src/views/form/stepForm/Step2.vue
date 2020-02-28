@@ -69,7 +69,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
   .stepFormText {
     margin-bottom: 24px;
 

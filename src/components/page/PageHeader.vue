@@ -100,7 +100,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
 
   .page-header {
     background: #fff;

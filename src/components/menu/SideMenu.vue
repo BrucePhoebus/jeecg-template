@@ -72,7 +72,7 @@
     }
   }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" type="text/scss" scoped>
 
   /* update_begin author:sunjianlei date:20190509 for: 修改侧边导航栏滚动条的样式 */
   .sider {
@@ -145,7 +145,7 @@
 </style>
 
 <!-- update_begin author:sunjianlei date:20190530 for: 选中首页的时候不显示背景颜色 -->
-<style lang="less">
+<style lang="less" type="text/less">
   .ant-menu.ant-menu-root {
     & > .ant-menu-item:first-child {
       background-color: transparent;
