@@ -16,7 +16,7 @@ const init = (callback) => {
       validateSt(st,sevice,callback);
     }else{
       var serviceUrl = encodeURIComponent(sevice);
-      window.location.href = window._CONFIG['casPrefixUrl']+"/login?service="+serviceUrl;
+      window.location.href = process.env.CAS_PREFIX_URL+"/login?service="+serviceUrl;
     }
   }
   console.log("-------单点登录结束-------");
@@ -59,7 +59,7 @@ function validateSt(ticket,service,callback){
     }else{
       var sevice = "http://"+window.location.host+"/";
       var serviceUrl = encodeURIComponent(sevice);
-      window.location.href = window._CONFIG['casPrefixUrl']+"/login?service="+serviceUrl;
+      window.location.href = process.env.CAS_PREFIX_URL+"/login?service="+serviceUrl;
     }
   }).catch((err) => {
     console.log(err);
