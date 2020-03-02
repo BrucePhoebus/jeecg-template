@@ -1,18 +1,14 @@
 <template>
-  <a-locale-provider :locale="locale">
-    <div id="app">
-      <router-view/>
-    </div>
-  </a-locale-provider>
+	<div id="app">
+		<router-view/>
+	</div>
 </template>
 <script>
-  import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
   import enquireScreen from '@/utils/device'
 
   export default {
     data () {
       return {
-        locale: zhCN,
       }
     },
     created () {
@@ -32,7 +28,6 @@
           that.$store.commit('TOGGLE_DEVICE', 'desktop')
           that.$store.dispatch('setSidebar', true)
         }
-
       })
     }
   }
