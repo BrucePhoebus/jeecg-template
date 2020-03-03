@@ -96,7 +96,6 @@ export function generateIndexRouter (data) {
 }
 
 // 生成嵌套路由（子路由）
-
 function generateChildRouters (data) {
 	const routers = []
 	for (var item of data) {
@@ -119,16 +118,13 @@ function generateChildRouters (data) {
 			redirect: item.redirect,
 			component: resolve => require(['@/' + component + '.vue'], resolve),
 			hidden: item.hidden,
-			//component:()=> import(`@/views/${item.component}.vue`),
 			meta: {
 				title: item.meta.title,
 				icon: item.meta.icon,
 				url: item.meta.url,
 				permissionList: item.meta.permissionList,
 				keepAlive: item.meta.keepAlive,
-				/*update_begin author:wuxianquan date:20190908 for:赋值 */
 				internalOrExternal: item.meta.internalOrExternal
-				/*update_end author:wuxianquan date:20190908 for:赋值 */
 			}
 		}
 		if (item.alwaysShow) {
@@ -138,15 +134,11 @@ function generateChildRouters (data) {
 		if (item.children && item.children.length > 0) {
 			menu.children = [...generateChildRouters(item.children)]
 		}
-		//--update-begin----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
 		//判断是否生成路由
 		if (item.route && item.route === '0') {
-			//console.log(' 不生成路由 item.route：  '+item.route);
-			//console.log(' 不生成路由 item.path：  '+item.path);
 		} else {
 			routers.push(menu)
 		}
-		//--update-end----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
 	}
 	return routers
 }

@@ -276,41 +276,40 @@
 				e.preventDefault()
 				let that = this
 				this.form.validateFields(['mobile'], {force: true}, (err, values) => {
-							if (!values.mobile) {
-								that.cmsFailed('请输入手机号')
-							} else if (!err) {
-								this.state.smsSendBtn = true
-								let interval = window.setInterval(() => {
-									if (that.state.time-- <= 0) {
-										that.state.time = 60
-										that.state.smsSendBtn = false
-										window.clearInterval(interval)
-									}
-								}, 1000)
-
-								const hide = this.$message.loading('验证码发送中..', 0)
-								let smsParams = {}
-								smsParams.mobile = values.mobile
-								smsParams.smsmode = '0'
-								postAction('/sys/sms', smsParams)
-								.then(res => {
-									if (!res.success) {
-										setTimeout(hide, 0)
-										this.cmsFailed(res.message)
-									}
-									console.log(res)
-									setTimeout(hide, 500)
-								})
-								.catch(err => {
-									setTimeout(hide, 1)
-									clearInterval(interval)
-									that.state.time = 60
-									that.state.smsSendBtn = false
-									this.requestFailed(err)
-								})
+					if (!values.mobile) {
+						that.cmsFailed('请输入手机号')
+					} else if (!err) {
+						this.state.smsSendBtn = true
+						let interval = window.setInterval(() => {
+							if (that.state.time-- <= 0) {
+								that.state.time = 60
+								that.state.smsSendBtn = false
+								window.clearInterval(interval)
 							}
-						}
-				)
+						}, 1000)
+
+						const hide = this.$message.loading('验证码发送中..', 0)
+						let smsParams = {}
+						smsParams.mobile = values.mobile
+						smsParams.smsmode = '0'
+						postAction('/sys/sms', smsParams)
+							.then(res => {
+								if (!res.success) {
+									setTimeout(hide, 0)
+									this.cmsFailed(res.message)
+								}
+								console.log(res)
+								setTimeout(hide, 500)
+							})
+							.catch(err => {
+								setTimeout(hide, 1)
+								clearInterval(interval)
+								that.state.time = 60
+								that.state.smsSendBtn = false
+								this.requestFailed(err)
+							})
+					}
+				})
 			},
 			stepCaptchaSuccess () {
 				this.loginSuccess()
@@ -321,6 +320,7 @@
 					this.stepCaptchaVisible = false
 				})
 			},
+			// 账号密码登录验证码获取
 			handleChangeCheckCode () {
 				this.currdatetime = new Date().getTime()
 				getAction(`/sys/randomImage/${this.currdatetime}`).then(res => {
@@ -337,10 +337,6 @@
 			},
 			loginSuccess () {
 				this.$router.push({name: 'dashboard'})
-				this.$notification.success({
-					message: '欢迎',
-					description: `${timeFix()}，欢迎回来`,
-				})
 			},
 			cmsFailed (err) {
 				this.$notification['error']({
@@ -355,6 +351,7 @@
 					description: ((err.response || {}).data || {}).message || err.message || '请求出现错误，请稍后再试',
 					duration: 4,
 				})
+				this.handleChangeCheckCode();
 				this.loginBtn = false
 			},
 			validateMobile (rule, value, callback) {
