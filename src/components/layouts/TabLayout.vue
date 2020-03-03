@@ -145,7 +145,7 @@
 				this.linkList.splice(0, 0, indexKey)
 			},
 			changeTitle (title) {
-				let projectTitle = 'Jeecg-Boot 企业级快速开发平台'
+				const projectTitle = process.env.VUE_APP_TITLE
 				// 首页特殊处理
 				if (this.$route.path === indexKey) {
 					document.title = projectTitle
