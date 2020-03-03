@@ -345,7 +345,7 @@
 	.ant-tabs.ant-tabs-card > .ant-tabs-bar {
 		.ant-tabs-tab {
 			border: none !important;
-			border-bottom: 1px solid transparent !important;
+			border-bottom: 2px solid transparent !important;
 		}
 
 		.ant-tabs-tab-active {
