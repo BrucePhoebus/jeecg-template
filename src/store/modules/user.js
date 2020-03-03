@@ -3,6 +3,7 @@ import { login, logout, phoneLogin } from '@/api/login'
 import { ACCESS_TOKEN, USER_NAME, USER_INFO, USER_AUTH, SYS_BUTTON_AUTH } from '@/store/mutation-types'
 import { welcome } from '@/utils/util'
 import { queryPermissionsByUser } from '@/api/api'
+import defaultRoute from '@/router/default-route'
 import { getAction } from '@/api/manage'
 
 const user = {
@@ -113,152 +114,24 @@ const user = {
 				})
 			})
 		},
-		// 获取用户信息
+		/*
+		* 获取用户信息
+		* */
 		GetPermissionList ({commit}) {
 			return new Promise((resolve, reject) => {
 				let v_token = Vue.ls.get(ACCESS_TOKEN)
 				let params = {token: v_token}
 				const response = {
 					result: {
-						menu: [
-							{
-								"redirect": null,
-								"path": "/dashboard/analysis",
-								"component": "dashboard/Analysis",
-								"route": "1",
-								"meta": {
-									"keepAlive": false,
-									"internalOrExternal": false,
-									"icon": "home",
-									"title": "首页"
-								},
-								"name": "dashboard-analysis",
-								"id": "9502685863ab87f0ad1134142788a385"
-							},
-							{
-								"redirect": null,
-								"path": "/account",
-								"component": "layouts/RouteView",
-								"route": "1",
-								"hidden": true,
-								"children": [
-									{
-										"path": "/account/center",
-										"component": "account/center/Index",
-										"route": "1",
-										"meta": {
-											"keepAlive": false,
-											"internalOrExternal": false,
-											"title": "个人中心"
-										},
-										"name": "account-center",
-										"id": "d86f58e7ab516d3bc6bfb1fe10585f97"
-									},
-									{
-										"path": "/account/settings/base",
-										"component": "account/settings/Index",
-										"route": "1",
-										"children": [
-											{
-												"path": "/account/settings/notification",
-												"component": "account/settings/Notification",
-												"route": "1",
-												"meta": {
-													"keepAlive": false,
-													"internalOrExternal": false,
-													"title": "新消息通知"
-												},
-												"name": "account-settings-notification",
-												"id": "fedfbf4420536cacc0218557d263dfea"
-											},
-											{
-												"path": "/account/settings/binding",
-												"component": "account/settings/Binding",
-												"route": "1",
-												"meta": {
-													"keepAlive": false,
-													"internalOrExternal": false,
-													"title": "账户绑定"
-												},
-												"name": "account-settings-binding",
-												"id": "4f66409ef3bbd69c1d80469d6e2a885e"
-											},
-											{
-												"path": "/account/settings/security",
-												"component": "account/settings/Security",
-												"route": "1",
-												"meta": {
-													"keepAlive": false,
-													"internalOrExternal": false,
-													"title": "安全设置"
-												},
-												"name": "account-settings-security",
-												"id": "ec8d607d0156e198b11853760319c646"
-											},
-											{
-												"path": "/account/settings/base",
-												"component": "account/settings/BaseSetting",
-												"route": "1",
-												"hidden": true,
-												"meta": {
-													"keepAlive": false,
-													"internalOrExternal": false,
-													"title": "基本设置"
-												},
-												"name": "account-settings-base",
-												"id": "1367a93f2c410b169faa7abcbad2f77c"
-											},
-											{
-												"path": "/account/settings/custom",
-												"component": "account/settings/Custom",
-												"route": "1",
-												"meta": {
-													"keepAlive": false,
-													"internalOrExternal": false,
-													"title": "个性化设置"
-												},
-												"name": "account-settings-custom",
-												"id": "882a73768cfd7f78f3a37584f7299656"
-											}
-										],
-										"meta": {
-											"keepAlive": false,
-											"internalOrExternal": false,
-											"title": "个人设置"
-										},
-										"name": "account-settings-base",
-										"id": "6e73eb3c26099c191bf03852ee1310a1",
-										"alwaysShow": true
-									},
-									{
-										"path": "/dashboard/workplace",
-										"component": "dashboard/Workplace",
-										"route": "1",
-										"meta": {
-											"keepAlive": false,
-											"internalOrExternal": false,
-											"title": "工作台"
-										},
-										"name": "dashboard-workplace",
-										"id": "8fb8172747a78756c11916216b8b8066"
-									}
-								],
-								"meta": {
-									"keepAlive": false,
-									"internalOrExternal": false,
-									"icon": "user",
-									"title": "个人页"
-								},
-								"name": "account",
-								"id": "717f6bee46f44a3897eca9abd6e2ec44"
-							}
-						]
+						menu: [],
+						auth: [],
+						allAuth: []
 					}
 				}
-				const menuData = response.result.menu
-				const authData = []
-				const allAuthData = []
-				//Vue.ls.set(USER_AUTH,authData);
+				const menuData = [...defaultRoute, ...response.result.menu]
+				response.result.menu.push(...defaultRoute);
+				const authData = response.result.auth
+				const allAuthData = response.result.allAuth
 				sessionStorage.setItem(USER_AUTH, JSON.stringify(authData))
 				sessionStorage.setItem(SYS_BUTTON_AUTH, JSON.stringify(allAuthData))
 				if (menuData && menuData.length > 0) {
@@ -272,7 +145,6 @@ const user = {
 							}
 						}
 					})
-					console.log(' menu show json ', menuData)
 					commit('SET_PERMISSIONLIST', menuData)
 					resolve(response)
 				} else {
@@ -280,8 +152,9 @@ const user = {
 				}
 			})
 		},
-		
-		// 登出
+		/*
+		* 登出
+		* */
 		Logout ({commit, state}) {
 			return new Promise((resolve) => {
 				let logoutToken = state.token

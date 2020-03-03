@@ -9,7 +9,7 @@
 					<a-form-item>
 						<a-input
 								size="large"
-								v-decorator="['username',validatorRules.username,{ validator: this.handleUsernameOrEmail }]"
+								v-decorator="['username', validatorRules.username, { validator: this.handleUsernameOrEmail }]"
 								type="text"
 								placeholder="请输入帐户名 / admin">
 							<a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
@@ -18,7 +18,7 @@
 
 					<a-form-item>
 						<a-input
-								v-decorator="['password',validatorRules.password]"
+								v-decorator="['password', validatorRules.password]"
 								size="large"
 								type="password"
 								autocomplete="false"
@@ -189,8 +189,14 @@
 					smsSendBtn: false,
 				},
 				validatorRules: {
-					username: {rules: [{required: true, message: '请输入用户名!'}, {validator: this.handleUsernameOrEmail}]},
-					password: {rules: [{required: true, message: '请输入密码!', validator: 'click'}]},
+					username: {
+						rules: [{required: true, message: '请输入用户名!'}, {validator: this.handleUsernameOrEmail}],
+						initialValue: 'admin'
+					},
+					password: {
+						rules: [{required: true, message: '请输入密码!', validator: 'click'}],
+						initialValue: '123456'
+					},
 					mobile: {rules: [{validator: this.validateMobile}]},
 					captcha: {rule: [{required: true, message: '请输入验证码!'}]},
 					inputCode: {rules: [{required: true, message: '请输入验证码!'}]}
@@ -293,21 +299,21 @@
 						smsParams.mobile = values.mobile
 						smsParams.smsmode = '0'
 						postAction('/sys/sms', smsParams)
-							.then(res => {
-								if (!res.success) {
-									setTimeout(hide, 0)
-									this.cmsFailed(res.message)
-								}
-								console.log(res)
-								setTimeout(hide, 500)
-							})
-							.catch(err => {
-								setTimeout(hide, 1)
-								clearInterval(interval)
-								that.state.time = 60
-								that.state.smsSendBtn = false
-								this.requestFailed(err)
-							})
+						.then(res => {
+							if (!res.success) {
+								setTimeout(hide, 0)
+								this.cmsFailed(res.message)
+							}
+							console.log(res)
+							setTimeout(hide, 500)
+						})
+						.catch(err => {
+							setTimeout(hide, 1)
+							clearInterval(interval)
+							that.state.time = 60
+							that.state.smsSendBtn = false
+							this.requestFailed(err)
+						})
 					}
 				})
 			},
@@ -351,7 +357,7 @@
 					description: ((err.response || {}).data || {}).message || err.message || '请求出现错误，请稍后再试',
 					duration: 4,
 				})
-				this.handleChangeCheckCode();
+				this.handleChangeCheckCode()
 				this.loginBtn = false
 			},
 			validateMobile (rule, value, callback) {
